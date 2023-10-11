@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include <math.h>
 #include <assert.h>
+#include "../prng/mt64.h"
+#include "../helpers/helpers.h"
 #include "hashing.h"
 
 // determine the length of the largest possible key-vector 
@@ -27,18 +29,20 @@ unsigned int* genHashVector(unsigned int m,  unsigned int r)
     for (int i = 0; i < r; i++)
     {   
         // Generate a random number in range(0, m)
-        A[i] = genrand64_int64() % m;
+        unsigned int x = genrand64_int64() % m; 
+        // printf("x: %d\n", x);
+        A[i] = x;
         assert(A[i] < m);
     }
-
+    printArray(A, r);
     return A; 
 }
 
 // Converts 'key' in base 10 to a vector with digits in base m
 unsigned int* changeBase(int key, unsigned int m, unsigned int r)
 {
-    int* K = (int*) calloc(r, sizeof(u_int32_t));
-    if (m == 0)     {return;}
+    unsigned int* K = (unsigned int*) calloc(r, sizeof(u_int32_t));
+    if (m == 0)     {return NULL;}
     for (int i = r-1; i >= 0; i--)
     {
         K[i] = key % m; // Possible Values 0...m-1
@@ -76,9 +80,10 @@ hashFunction* setup(unsigned int size)
     hashFunction* h = (hashFunction*) malloc(sizeof(hashFunction));
 
     // file containing all primes before 500000
-    char* filename = "numbers.txt";         
+    // char* filename = "numbers.txt";         
     // actual size of m is a prime, read from given file
-    h->m = find_prime_file(size, filename);
+    h->m = getPrime_fromFile(size);
+    printf("Prime: %d\n", h->m);
     // Size of hash-vector
     h->r = set_r(INT32_MAX, h->m);                  
     // generate the vector of random digits in base m

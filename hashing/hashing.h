@@ -2,9 +2,9 @@
 #define HASHING_H
 
 typedef struct {
-    unsigned int m;
-    unsigned int r;
-    unsigned int* A;
+    unsigned int m;     // Also corresponds to the numbers of buckets in a hashtable
+    unsigned int r;     // Size of Random Vector
+    unsigned int* A;    // Random vector of digits in base m
 }
 hashFunction;
 

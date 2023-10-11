@@ -4,16 +4,26 @@
 #include <stddef.h>
 #include "hashing.h"
 
-typedef struct KeyValuePair;
+#define NOT_FOUND INT32_MIN+5
+
+typedef struct {
+    int key;
+    int value;
+} 
+KeyValuePair;
+
 typedef struct 
 {
     KeyValuePair **table;
     size_t table_size;
 } 
-HashMap;
+hashMap;
 
-HashMap* createHashMap(size_t n);
-void    insert(HashMap *map, hashFunction* h, int key, int value);
-int     get(HashMap *map, hashFunction* h, int key);
+hashMap*    createHashMap(size_t n);
+void        insert(hashMap *map, hashFunction* h, int key, int value);
+int         get(hashMap *map, hashFunction* h, int key);
+void        printKeyValuePair(KeyValuePair* x);
+void        printHashMap(hashMap* x);
+void        freeHashMap(hashMap *map);
 
 #endif
