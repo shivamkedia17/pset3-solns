@@ -4,11 +4,15 @@ Instructor: Debayan Gupta
 Monsoon 2023  
 
 ## Question 1 - Universal Hashing
+**Universal Hashing - 80 points**
 Assume you are only given integers. Implement the following dot-product hash family:
 $$ h(k) = a.k \mod p $$
 Review the [dot-product hash family.](https://youtu.be/z0lJ2k0sl1g)
 
-## Question 2 - Isomorphic Numbers
++ You are provided with set of helper functions
+
+## Question 2 
+**Isomorphic Numbers - 25 points**
 Check whether two given numbers are isomorphic. Your solution should run in $O(n)$ time. Note that this rules out a brute force solution. You are expected to use hashing. 
 Assume that two numbers are isomorphic if there exists a one-one correspondence between the digits of the two numbers. Numbers of unequal length are not isomorphic by default.
 
@@ -34,14 +38,15 @@ Your output should look like:
     67980 and 67890 are isomorphic.
     132477 and 123477 are isomorphic.
     458109004 and 197356551 are isomorphic. 
-    1234567890 and 0987456231 are isomorphic.
+    1234567890 and 9087456231 are isomorphic.
 
     2345654 and 1453 are NOT isomorphic.
     2345654 and 2435663 are NOT isomorphic.
-    1234556777890 and 0987495660231 are NOT isomorphic.
+    234556777890 and 987495660231 are NOT isomorphic.
 ```
 
-## Question 3 - Replace by Rank
+## Question 3
+### Replace by Rank - 25 points
 You are given a set of numbers 
 $$ n_0, n_1, n_3, \dots, n_k $$
 
@@ -57,7 +62,8 @@ i.e, for an input of 4 numbers:
     Output: Rank, Rank, Rank, Rank
 ```
 
-## Question 4 - Bloom Filter
+## Question 4 
+### Bloom Filter - 70 points
 Create a bloom filter with the following components: 
 + `k` distinct hash functions: Create instances of $h(x)$ from `Question 1`.
 + A bit array of size `n`
@@ -86,3 +92,11 @@ Hints:
 
 ## Usage:
 1. Each directory contains a `main.c` which is the entry point of your code.
+
+- #define LARGEST_INT
+- hash() chooses the next largest prime as your base
+- modify hashmap() accordingly to account for the hash_index possibly being greater than the size of the map
+- modify for unique inputs in the array, we have chosen some keys that purposely prevent duplicates
+- ensure there are no memory leaks 
+- do not change the directory structure
+- you have been given helper functions for 

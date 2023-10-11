@@ -80,12 +80,13 @@ hashFunction* setup(unsigned int size)
     hashFunction* h = (hashFunction*) malloc(sizeof(hashFunction));
 
     // file containing all primes before 500000
-    // char* filename = "numbers.txt";         
     // actual size of m is a prime, read from given file
     h->m = getPrime_fromFile(size);
-    printf("Prime: %d\n", h->m);
+    // printf("Prime: %d\n", h->m);
+
     // Size of hash-vector
-    h->r = set_r(INT32_MAX, h->m);                  
+    // int largest_int = INT32_MAX;
+    h->r = set_r(LARGEST_INT, h->m);                  
     // generate the vector of random digits in base m
     h->A = genHashVector(h->m, h->r);
 
@@ -104,7 +105,7 @@ unsigned int hash(hashFunction* h, int key)
     return index;
 }
 
-void destruct(hashFunction* h)
+void destructHash(hashFunction* h)
 {
     free(h->A);
     free(h);

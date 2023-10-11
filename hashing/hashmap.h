@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include "hashing.h"
 
-#define NOT_FOUND INT32_MIN+5
+#define NOT_FOUND INT32_MAX-5
 
 typedef struct {
     int key;

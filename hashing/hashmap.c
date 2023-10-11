@@ -3,14 +3,6 @@
 #include <assert.h>
 #include "hashmap.h"
 
-// Define the structure for a key-value pair
-// typedef struct 
-// {
-//     int key;
-//     int value;
-// } 
-// KeyValuePair;
-
 // Create a new hashmap
 hashMap* createHashMap(size_t n) 
 {
@@ -26,7 +18,9 @@ void insert(hashMap *map, hashFunction* h, int key, int value)
     assert(map != NULL);
     assert(h   != NULL); // Ensure Hash Function has been setup before calling
 
-    unsigned int index = hash(h, key);
+    // IMPORTANT: assume that our hash function returns indicies greater than map->table_size
+    // Adjust the indices accordingly
+    unsigned int index = hash(h, key) % map->table_size;
 
     if (map->table[index] != NULL) {
         printf("Collision:\nInserting at Index: %d \t key: %d \t value: %d\n", index, key, value);
@@ -57,9 +51,10 @@ int get(hashMap *map, hashFunction* h, int key)
     assert(map != NULL);
     assert(h   != NULL); // Ensure Hash Function has been setup before calling
 
-    unsigned int index = hash(h, key);
+    unsigned int index = hash(h, key) % map->table_size;
 
-    if (map->table[index] == NULL) {
+    if (map->table[index] == NULL) 
+    {
         return NOT_FOUND;
     }
 

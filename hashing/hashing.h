@@ -8,6 +8,8 @@ typedef struct {
 }
 hashFunction;
 
+#define LARGEST_INT 50000
+
 // unsigned int  set_r(int key, unsigned int m);
 // unsigned int* changeBase(int key, unsigned int m, unsigned int r);
 // unsigned int* genHashVector(unsigned int m,  unsigned int r);
@@ -15,6 +17,6 @@ hashFunction;
 // unsigned int  computeHash(unsigned int* K, unsigned int* A, const unsigned int r, unsigned int m);
 
 hashFunction*   setup(unsigned int size);
-void            destruct(hashFunction* h);
+void            destructHash(hashFunction* h);
 unsigned int    hash(hashFunction* h, int key);
 #endif
