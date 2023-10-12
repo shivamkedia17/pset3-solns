@@ -1,10 +1,19 @@
-CC = clang
-CFLAGS = -Wall -g
+CC = gcc
+DEBUG_FILE = testhash-debug
 EXEC_FILE = testhash
+INCLUDES = ../hashing/hashing.o ../hashing/hashmap.o ../helpers/helpers.o ../prng/mt19937-64.o
+CURRENT = testhash.o
 
-$(EXEC_FILE): main.o hashing.o hashmap.o ../helpers/helpers.o ../prng/mt19937-64.o
-	$(CC) $^ -o $@ $(CFLAGS)
-	rm -f *.o ../helpers/*.o ../prng/*.o
+debug: CFLAGS = -Wall -g
+
+debug: main.o $(CURRENT) $(INCLUDES)
+	$(CC) $(CFLAGS) $^ -o $(DEBUG_FILE)
+
+$(EXEC_FILE): CFLAGS = -Wall
+
+$(EXEC_FILE): main.o $(CURRENT) $(INCLUDES)
+	$(CC) $(CFLAGS) $^ -o $@
+	rm -f $^
 
 clean:
-	rm -f *.o ../helpers/*.o ../prng/*.o $(EXEC_FILE)
+	rm -f *.o $(INCLUDES) $(EXEC_FILE) $(DEBUG_FILE)
