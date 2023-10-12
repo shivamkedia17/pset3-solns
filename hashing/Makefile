@@ -2,7 +2,7 @@ CC = gcc
 DEBUG_FILE = testhash-debug
 EXEC_FILE = testhash
 INCLUDES = ../hashing/hashing.o ../hashing/hashmap.o ../helpers/helpers.o ../prng/mt19937-64.o
-CURRENT = testhash.o
+CURRENT = main.o
 
 debug: CFLAGS = -Wall -g
 

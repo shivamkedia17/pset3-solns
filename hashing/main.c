@@ -5,12 +5,12 @@
 #include "hashing.h"
 #include "hashmap.h"
 
-int main(int argc, char *argv[]) 
+int main(int argc, char *argv[])
 {
     // Make sure we have a seed
-    if(argc != 3) 
+    if(argc != 4)
     {
-        printf("Usage: %s <seed> <table_size>\n", argv[0]);
+        printf("Usage: %s <seed> <table_size> <array_length>\n", argv[0]);
         exit(1);
     }
 
@@ -26,16 +26,16 @@ int main(int argc, char *argv[])
     printHashMap(map);
 
     // Generate a randomArray to test your hash function
-    int l    = 10;
+    int l    = atoi(argv[3]);
     unsigned int *arr = randomArray(l);
     printArray(arr, l);
 
 
-    for (int i = 0; i < l; i++) 
+    for (int i = 0; i < l; i++)
     {
         int key = arr[i];
-        
-        if (get(map, h, key) == NOT_FOUND) 
+
+        if (get(map, h, key) == NOT_FOUND)
         {
             assert(insert(map, h, key, hash(h, key)));
         }

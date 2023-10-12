@@ -13,7 +13,7 @@ typedef struct
     bool *filter;               // bit array
     unsigned int k;             // k
     unsigned int fs;            // filter_size
-} 
+}
 bloomFilter;
 
 bloomFilter*    createFilter(unsigned int k, unsigned int* sizes, unsigned int fs);
