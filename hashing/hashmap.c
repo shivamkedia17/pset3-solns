@@ -13,7 +13,7 @@ hashMap* createHashMap(size_t n)
 }
 
 // Insert a key-value pair into the hashmap
-void insert(hashMap *map, hashFunction* h, int key, int value) 
+bool insert(hashMap *map, hashFunction* h, int key, int value) 
 {
     assert(map != NULL);
     assert(h   != NULL); // Ensure Hash Function has been setup before calling
@@ -22,31 +22,42 @@ void insert(hashMap *map, hashFunction* h, int key, int value)
     // Adjust the indices accordingly
     unsigned int index = hash(h, key) % map->table_size;
 
+    /* 
     if (map->table[index] != NULL) {
         printf("Collision:\nInserting at Index: %d \t key: %d \t value: %d\n", index, key, value);
         printf("Already present: \t");
         printKeyValuePair(map->table[index]);
         return;
     }
-
-    /*
-    while (map->table[index] != NULL) 
-    {
-        // Linear probing: Move to the next slot if collision occurs
-        index = (index + 1) % map->table_size;
-    }
     */
 
-    // Create a new key-value pair
-    KeyValuePair* pair = (KeyValuePair*) malloc(sizeof(KeyValuePair));
-    pair->key   = key;
-    pair->value = value;
+    // Begin linear probing
+    for (unsigned int n_visited = 0; n_visited < map->table_size; n_visited++)
+    {
+        if (map->table[index] != NULL) // Current index has some key-value pair
+        {
+            index = (index + 1) % map->table_size;
+            continue;
+        }
+        else                           // Current index in table is empty
+        {
+            // Create a new key-value pair to insert here
+            KeyValuePair* pair = (KeyValuePair*) malloc(sizeof(KeyValuePair));
+            pair->key   = key;
+            pair->value = value;
+            
+            // printKeyValuePair(pair);
+            map->table[index] = pair;
+            return true;
+        }
+    }
     
-    map->table[index] = pair;
+    // if function hasn't returned yet, means table is full
+    return false;
 }
 
 // Retrieve a value from the hashmap using a key
-int get(hashMap *map, hashFunction* h, int key) 
+unsigned int get(hashMap *map, hashFunction* h, int key) 
 {
     assert(map != NULL);
     assert(h   != NULL); // Ensure Hash Function has been setup before calling
@@ -57,20 +68,18 @@ int get(hashMap *map, hashFunction* h, int key)
     {
         return NOT_FOUND;
     }
-
-    if (map->table[index]->key == key)
+    
+    // Begin linear probing
+    unsigned int n_visited = 0;
+    while (map->table[index] != NULL && n_visited < map->table_size)
     {
-        return map->table[index]->value;
-    }
-
-    /* 
-    while (map->table[index] != NULL) {
-        if (strcmp(map->table[index]->key, key) == 0) {
+        if (map->table[index]->key == key)
+        {
             return map->table[index]->value;
         }
-        // Linear probing: Move to the next slot if the key is not found
+        n_visited++;
         index = (index + 1) % map->table_size;
-    } */
+    }
 
     return NOT_FOUND; // Key not found
 }

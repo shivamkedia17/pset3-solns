@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include "../helpers/helpers.h"
 #include "../prng/mt64.h"
 #include "hashing.h"
@@ -28,7 +27,7 @@ int main(int argc, char *argv[])
 
     // Generate a randomArray to test your hash function
     int l    = 10;
-    int *arr = randomArray(l);
+    unsigned int *arr = randomArray(l);
     printArray(arr, l);
 
 
@@ -36,14 +35,15 @@ int main(int argc, char *argv[])
     {
         int key = arr[i];
         
-        if (get(map, h, key) == NOT_FOUND) {
-            insert(map, h, key, hash(h, key));
+        if (get(map, h, key) == NOT_FOUND) 
+        {
+            assert(insert(map, h, key, hash(h, key)));
         }
     }
 
     printHashMap(map);
 
     free(arr);
-    destruct(h);
+    destructHash(h);
     freeHashMap(map);
 }

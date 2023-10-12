@@ -34,7 +34,7 @@ unsigned int* genHashVector(unsigned int m,  unsigned int r)
         A[i] = x;
         assert(A[i] < m);
     }
-    printArray(A, r);
+    // printArray(A, r);
     return A; 
 }
 
