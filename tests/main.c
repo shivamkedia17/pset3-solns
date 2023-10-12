@@ -4,11 +4,10 @@
 #include "../hashing/hashmap.h"
 #include "../prng/mt64.h"
 #include "../helpers/helpers.h"
-#include "replacebyrank.h"
 
 int main(int argc, char *argv[]) 
 {
-    // Make sure we have a seed
+    //Make sure we have a seed
     if(argc != 3) 
     {
         printf("Usage: %s <seed> <array_length>\n", argv[0]);
@@ -26,19 +25,8 @@ int main(int argc, char *argv[])
 
     printf("Input:  \t");
     printArray(A, n);
-/* 
+    sortArray(A, n);
     printf("Sorted: \t");
-    unsigned int *C = duplicateArray(A, n);
-    sortArray(C, n);
-    printArray(C, n);
-    replace_by_rank(C, n);
-    printf("Sorted: \t");
-    printArray(C, n);
-    free(C);
- */
-    replace_by_rank(A, n);
-
-    printf("Output: \t");
     printArray(A, n);
 
     free(A);
