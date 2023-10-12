@@ -1,3 +1,4 @@
+
 # CS-1203-1 Assignment 3
 Data Structures, Ashoka University
 Instructor: Debayan Gupta
@@ -16,12 +17,12 @@ Before proceeding, please ensure you are already familiar with performing basic 
     - Changing directories using `cd`
 - How an IDE (like VS Code) provides a simple GUI for the above tasks
 - How to open a folder in an IDE and work with it
-- Understand `pointers`, `malloc`, `calloc` and `struct`s in C
+- Understand `pointers`, `malloc`, `calloc`, `typedef` and `struct`s in C
 
 ### 2. Structure of the Repository
-You have been provided with boilerplate (aka starter) code. Clone this git repo locally, open it in an IDE (like VS Code / Sublime Text / CodeBlocks / whtv suits you) or a cool Text Editor (like Vim) and start working on it.
+You have been provided with boilerplate (aka starter) code. Clone [this git repo]() locally, open it in an IDE (like VS Code / Sublime Text / CodeBlocks / whtv suits you) or a cool Text Editor (like Vim) and start working on it.
 
-+ Your task is to fill **only** those functions mentioned below on a per-question basis.
++ Your task is to fill **only** those functions mentioned below on a per-question basis. Look for `// TODO`s in the files.
 + Folders pertain to **one** functional component of assignment.
 + For each question, find the folder with the relevant name below.
 
@@ -40,6 +41,8 @@ The repository is structured as follows:
     - `duplicateArray()`: Creates a duplicate of a given array by allocating memory for it. Similar to deepcopy in python. Do NOT forget to free this array after you're done.
     - `printArray()`: Prints an array to the terminal.
     - `sortArray()`: Sorts an array
+- `tests/`: A folder containing expected outputs so that you can test locally, if you want.
+    - `expected/`: Contains expected outputs for each question in a `.txt` file.
 - `hashing/`: Contains all the files related to hashing (**Question 1**). This will be used in all subsequent questions.
     + `hashing.c`: Implement the dot-product hash family. CODE GOES HERE
     + `hashmap.c`: Implements a simple hashMap using the `hashFunction()` implemented by you. Uses linear probing. (DO NOT TOUCH)
@@ -86,7 +89,15 @@ For Windows:
     make <executable_name>
 ```
 
-### 5. Debugging
+### 5. Testing Locally (Optional)
+The test command for each question is given below (the `./` will different for Windows). You can `diff` your output to that provided in `tests/expected/`
+1. `./testhash 5 10 9`
+2. `./isomorphic`
+3. `./replacebyrank 2181 15`
+4. `./bloomfilter 9 filterparams.txt`
+
+
+### 6. Debugging
 #### a. Easy Way - `printf()`
 Sprinkle `printf()` wherever you think your program could have gone wrong. Often it helps to add a printf() before and after a block to check for issues.
 
@@ -116,6 +127,9 @@ Implement the following features of your hash function in `hashing.c`:
 2. `destructHash()`: Deallocates memory allocated to the components of the hash function.
 3. `hash()`: Return an `index` between `0` and `m-1` (inclusive) given a `key`. This is called the *"hash"* of the `key` under the current hash function.
 4. Fill in all the empty functions in the process and use them to perform the necessary tasks when implementing the above mentioned features of your hash function.
+5. *Note*:
+
+**Hint:** Find out the difference between `malloc()` and `calloc()`. Think about where you might need it.
 
 A *HashMap* has been implemented for you in `hashmap.c`. The accuracy of tests is ensured by the platform-agnostic Pseuodrandom Number Generator located inside `prng/`, so you need not worry about tests failing due to randomness. This ensures that the tests are deterministic. If your hash function is implemented correctly, it will pass all autograder tests.
 
@@ -217,4 +231,5 @@ Hints:
 **Tips**:
 - Carefully peruse the `structs` given in the boilerplate code. It will make a lot of things clear.
 - These are **not** difficult to code up. It's way easier than it looks. However, you must be clear with what's going on in each function to be able to write it up.
+- Use assertions, i.e, `assert(<boolean condition>)` to check that inputs to functions are valid. You will find some examples of these in the code given to you.
 ---

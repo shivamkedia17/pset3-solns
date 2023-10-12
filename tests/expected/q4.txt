@@ -1,0 +1,26 @@
+Initial State: 
+Filter: 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+Inserting: 1234
+Filter: 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0
+Inserting: 78
+Filter: 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0
+Inserting: 26
+Filter: 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0
+Inserting: 59
+Filter: 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0
+
+78 is PROBABLY in the filter.
+26 is PROBABLY in the filter.
+42 is NOT in the filter.
+20 is NOT in the filter.
+
+Inserting: 234
+Filter: 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0
+
+98 is NOT in the filter.
+59 is PROBABLY in the filter.
+1234 is PROBABLY in the filter.
+Final State: 
+Filter: 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0
+

@@ -1,0 +1,8 @@
+12345 and 54312 are isomorphic.
+67980 and 67890 are isomorphic.
+132477 and 123477 are isomorphic.
+458109004 and 197356551 are isomorphic.
+1234567890 and 9087456231 are isomorphic.
+2345654 and 1453 are NOT isomorphic.
+2345654 and 2435663 are NOT isomorphic.
+234556777890 and 987495660231 are NOT isomorphic.

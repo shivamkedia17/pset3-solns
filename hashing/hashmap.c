@@ -4,7 +4,7 @@
 #include "hashmap.h"
 
 // Create a new hashmap
-hashMap* createHashMap(size_t n) 
+hashMap* createHashMap(size_t n)
 {
     hashMap *map    = (hashMap*)        malloc(sizeof(hashMap));
     map->table      = (KeyValuePair**)  calloc(n, sizeof(KeyValuePair*));
@@ -13,7 +13,7 @@ hashMap* createHashMap(size_t n)
 }
 
 // Insert a key-value pair into the hashmap
-bool insert(hashMap *map, hashFunction* h, int key, int value) 
+bool insert(hashMap *map, hashFunction* h, int key, int value)
 {
     assert(map != NULL);
     assert(h   != NULL); // Ensure Hash Function has been setup before calling
@@ -22,7 +22,7 @@ bool insert(hashMap *map, hashFunction* h, int key, int value)
     // Adjust the indices accordingly
     unsigned int index = hash(h, key) % map->table_size;
 
-    /* 
+    /*
     if (map->table[index] != NULL) {
         printf("Collision:\nInserting at Index: %d \t key: %d \t value: %d\n", index, key, value);
         printf("Already present: \t");
@@ -45,30 +45,30 @@ bool insert(hashMap *map, hashFunction* h, int key, int value)
             KeyValuePair* pair = (KeyValuePair*) malloc(sizeof(KeyValuePair));
             pair->key   = key;
             pair->value = value;
-            
+
             // printKeyValuePair(pair);
             map->table[index] = pair;
             return true;
         }
     }
-    
+
     // if function hasn't returned yet, means table is full
     return false;
 }
 
 // Retrieve a value from the hashmap using a key
-unsigned int get(hashMap *map, hashFunction* h, int key) 
+unsigned int get(hashMap *map, hashFunction* h, int key)
 {
     assert(map != NULL);
     assert(h   != NULL); // Ensure Hash Function has been setup before calling
 
     unsigned int index = hash(h, key) % map->table_size;
 
-    if (map->table[index] == NULL) 
+    if (map->table[index] == NULL)
     {
         return NOT_FOUND;
     }
-    
+
     // Begin linear probing
     unsigned int n_visited = 0;
     while (map->table[index] != NULL && n_visited < map->table_size)
@@ -85,11 +85,11 @@ unsigned int get(hashMap *map, hashFunction* h, int key)
 }
 
 // Free memory allocated for the hashmap
-void freeHashMap(hashMap *map) 
+void freeHashMap(hashMap *map)
 {
-    for (int i = 0; i < map->table_size; i++) 
+    for (int i = 0; i < map->table_size; i++)
     {
-        if (map->table[i] != NULL) 
+        if (map->table[i] != NULL)
         {
             free(map->table[i]);
         }

@@ -23,11 +23,14 @@ int main(int argc, char *argv[])
 
     // Generate a hash table
     hashMap* map = createHashMap(h->m);
+    printf("Initial Table State: \n");
     printHashMap(map);
+    printf("\n");
 
     // Generate a randomArray to test your hash function
     int l    = atoi(argv[3]);
     unsigned int *arr = randomArray(l);
+    printf("Random Array: ");
     printArray(arr, l);
 
 
@@ -41,6 +44,8 @@ int main(int argc, char *argv[])
         }
     }
 
+    printf("\n");
+    printf("Final Table State: \n");
     printHashMap(map);
 
     free(arr);

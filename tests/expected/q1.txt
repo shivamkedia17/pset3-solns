@@ -1,0 +1,33 @@
+Initial Table State: 
+
+----------Start----------
+Index: 0	Key : NULL 	Value: NULL
+Index: 1	Key : NULL 	Value: NULL
+Index: 2	Key : NULL 	Value: NULL
+Index: 3	Key : NULL 	Value: NULL
+Index: 4	Key : NULL 	Value: NULL
+Index: 5	Key : NULL 	Value: NULL
+Index: 6	Key : NULL 	Value: NULL
+Index: 7	Key : NULL 	Value: NULL
+Index: 8	Key : NULL 	Value: NULL
+Index: 9	Key : NULL 	Value: NULL
+Index: 10	Key : NULL 	Value: NULL
+----------End------------
+
+Random Array: 31, 89, 20, 44, 86, 43, 89, 2, 93
+
+Final Table State: 
+
+----------Start----------
+Index: 0	Key : 86 	Value: 0
+Index: 1	Key : NULL 	Value: NULL
+Index: 2	Key : NULL 	Value: NULL
+Index: 3	Key : NULL 	Value: NULL
+Index: 4	Key : 44 	Value: 4
+Index: 5	Key : 20 	Value: 5
+Index: 6	Key : 31 	Value: 6
+Index: 7	Key : 89 	Value: 6
+Index: 8	Key : 43 	Value: 5
+Index: 9	Key : 2 	Value: 7
+Index: 10	Key : 93 	Value: 9
+----------End------------
