@@ -1,6 +1,11 @@
-.vscode
-*/*
-!hashing/*
+*
+.*
+!*/
+!*.c
+!*.h
+!*.txt
+!Makefile
+!.gitignore
+!README.md
 
-*.o
-*.code*
+.vscode
