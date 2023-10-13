@@ -22,9 +22,9 @@ Before proceeding, please ensure you are already familiar with performing basic 
 ### 2. Structure of the Repository
 You have been provided with boilerplate (aka starter) code. Clone [this git repo]() locally, open it in an IDE (like VS Code / Sublime Text / CodeBlocks / whtv suits you) or a cool Text Editor (like Vim) and start working on it.
 
-+ Your task is to fill **only** those functions mentioned below on a per-question basis. Look for `// TODO`s in the files.
 + Folders pertain to **one** functional component of assignment.
 + For each question, find the folder with the relevant name below.
++ Your task is to fill **only** those functions mentioned below on a per-question basis. Look for `// TODO`s in the files.
 
 **Each folder** (corresponding to a question) will contain:
 - some `.c` files (which contain C source code)
@@ -32,7 +32,9 @@ You have been provided with boilerplate (aka starter) code. Clone [this git repo
 - **one** `main.c` file (which is used to test and run the code)
 - and a `Makefile` (which is helps simplify the compilation process)
 
-This has been done to help autograde the relevant components easily. Do not worry about the `.h`, `main.c` and `Makefile`s in these folders. You are **not** supposed to touch them. If you make changes to these files, the *autograder* will **break**.
+This has been done to help autograde the relevant components easily. Do not worry about the `main.c` and `Makefile`s in these folders. You are **not** supposed to touch them. If you make changes to these files, the *autograder* will **break**.
+
+**Importantly**, peruse the **`.h`** carefully. They contain important declarations for `struct`s and functions that you are supposed to use (or implement). It is through these *header* files that the code in the corresponding `.c` file is made visible to other files. This is why you'll see a number of `#include "someheader.h"` across the codebase. If you notice carefully, functions *not in the header file* are *not visible* outside of the corresponding C file. For e.g `set_r()` in `hashing.c` cannot be used in any other file even if you `#include "<path_to_hashing.h>"` in that file. Keep this in mind while figuring out which functions are helpers *inside* a file, and which others provide an interface to your data structure *outside* the file.
 
 The repository is structured as follows:
 - `prng/`: Contains the Pseudo-Random Number Generator (DO NOT TOUCH)

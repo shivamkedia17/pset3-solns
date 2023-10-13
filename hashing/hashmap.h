@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 #include <stdbool.h>
+#include <stdint.h>
 #include "hashing.h"
 
 #define NOT_FOUND INT32_MAX-5
@@ -10,14 +11,14 @@
 typedef struct {
     int key;
     int value;
-} 
+}
 KeyValuePair;
 
-typedef struct 
+typedef struct
 {
     KeyValuePair **table;
     size_t table_size;
-} 
+}
 hashMap;
 
 hashMap*        createHashMap(size_t n);
