@@ -1,6 +1,9 @@
 #ifndef HASHING_H
 #define HASHING_H
 
+#include <stddef.h>
+#include <stdint.h>
+
 typedef struct {
     unsigned int m;     // Also corresponds to the numbers of buckets in a hashtable
     unsigned int r;     // Size of Random Vector

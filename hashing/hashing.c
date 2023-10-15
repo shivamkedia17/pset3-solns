@@ -7,14 +7,14 @@
 #include "../helpers/helpers.h"
 #include "hashing.h"
 
-// determine the length of the largest possible key-vector 
+// determine the length of the largest possible key-vector
 unsigned int set_r(int largest_key, unsigned int m)
 {
     if (m == 0)     {return -1;}
 
     unsigned int r;
     for (r = 1; largest_key > 0; r++)    {largest_key = largest_key/m;}
-    assert(pow(m,r) > largest_key);
+    // assert(pow(m,r) > largest_key);
     return r;
 }
 
@@ -27,21 +27,21 @@ unsigned int* genHashVector(unsigned int m,  unsigned int r)
 
     // Generate r many random digits
     for (int i = 0; i < r; i++)
-    {   
+    {
         // Generate a random number in range(0, m)
-        unsigned int x = genrand64_int64() % m; 
+        unsigned int x = genrand64_int64() % m;
         // printf("x: %d\n", x);
         A[i] = x;
         assert(A[i] < m);
     }
     // printArray(A, r);
-    return A; 
+    return A;
 }
 
 // Converts 'key' in base 10 to a vector with digits in base m
 unsigned int* changeBase(int key, unsigned int m, unsigned int r)
 {
-    unsigned int* K = (unsigned int*) calloc(r, sizeof(u_int32_t));
+    unsigned int* K = (unsigned int*) calloc(r, sizeof(unsigned int));
     if (m == 0)     {return NULL;}
     for (int i = r-1; i >= 0; i--)
     {
@@ -86,7 +86,7 @@ hashFunction* setup(unsigned int size)
 
     // Size of hash-vector
     // int largest_int = INT32_MAX;
-    h->r = set_r(LARGEST_INT, h->m);                  
+    h->r = set_r(LARGEST_INT, h->m);
     // generate the vector of random digits in base m
     h->A = genHashVector(h->m, h->r);
 
