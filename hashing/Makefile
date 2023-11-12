@@ -13,7 +13,7 @@ $(EXEC_FILE): CFLAGS = -Wall
 
 $(EXEC_FILE): main.o $(CURRENT) $(INCLUDES)
 	$(CC) $(CFLAGS) $^ -o $@
-	rm -f $^
+	# rm -f $^
 
 clean:
 	rm -f *.o $(INCLUDES) $(EXEC_FILE) $(DEBUG_FILE)

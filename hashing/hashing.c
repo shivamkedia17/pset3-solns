@@ -49,7 +49,7 @@ unsigned int* changeBase(int key, unsigned int m, unsigned int r)
         assert(K[i] < m);
         key = key/m;
     }
-
+    /* printArray(K, r); */
     return K;
 }
 
@@ -61,6 +61,7 @@ unsigned int dotproduct(unsigned int* A, unsigned int* B, const unsigned int r)
     unsigned int sum = 0;
     for (int i = 0; i < r; i++) {sum = sum + (A[i] * B[i]);}
 
+    // printArray(&sum, 1);
     return (sum);
 }
 
@@ -100,6 +101,7 @@ unsigned int hash(hashFunction* h, int key)
     unsigned int* K = changeBase(key, h->m, h->r);
     unsigned int index = computeHash(K, h->A, h->r, h->m);
 
+    /* printArray(&index, 1); */
     assert(index < h->m);
     free(K);
     return index;
